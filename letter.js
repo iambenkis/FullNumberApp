@@ -24,7 +24,7 @@ let n = {
         19: 'dix-neuf'
     },
     dizaines: {
-
+        10: 'dix',
         20: 'vingt',
         30: 'trente',
         40: 'quarante',
@@ -59,9 +59,27 @@ if (myNumber <= 1000) {
     if (myNumber >= 20 && u == 0 && c == 0) {
         alert(n.dizaines[myNumber])
     }
-    if (d > 0 && u > 0) {
-
+    if (c <= 0 && d > 0 && u > 0) {
         alert(n.dizaines[d * 10] + ' ' + n.unite[u])
+    }
+
+    if (c > 0) {
+        if (c > 0 && d == 0 && u == 0) {
+            alert(c > 1 ? n.unite[c] : '' + ' ' + n.upDizaine[100]);
+
+        } else if (c == 1 && d > 10) {
+            alert(n.upDizaine[100] + '  ' + n.dizaines[d * 10] + ' ' + n.unite[u]);
+        } else if (c == 1 && u < 10 && d == 0) {
+            alert(n.upDizaine[100] + '  ' + n.unite[u]);
+        } else if (c == 1 && d > 0 && u > 0) {
+            alert(n.upDizaine[100] + ' ' + n.regDizaine[myNumber - 100]);
+        } else if (myNumber - (c * 100) < 20 && d == 0) {
+            alert(n.unite[c] + ' ' + n.upDizaine[100] + ' ' + n.unite[u])
+        } else if (myNumber - (c * 100) < 20) {
+            alert(n.unite[c] + ' ' + n.upDizaine[100] + ' ' + n.regDizaine[myNumber - (c * 100)])
+        } else {
+            alert(n.unite[c] + ' ' + n.upDizaine[100] + ' ' + n.dizaines[d * 10] + ' ' + n.unite[u])
+        }
     }
 } else {
     alert('your Number is greater than 1000')
